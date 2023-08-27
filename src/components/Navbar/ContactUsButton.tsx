@@ -52,10 +52,13 @@ export default function ContactUsButton() {
             >
               <Flex p={["4", "10"]} textAlign="center" direction="column">
                 <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
-                  Drop Us a Line. Share Your Vision.
+                  Your story, Our Expertise.
                 </Text>
-                <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
-                  Let&apos;s Make Digital Magic!
+                <Text fontWeight="semibold" fontSize={["3xl", "5xl"]}>
+                  Connect with Us.
+                </Text>
+                <Text fontWeight="semibold" fontSize={["3xl", "5xl"]}>
+                  Let&apos;s Script Success!
                 </Text>
               </Flex>
 
@@ -67,7 +70,7 @@ export default function ContactUsButton() {
               </Text>
 
               <Stack
-                w={["100%", "70%"]}
+                w={["100%", "60%"]}
                 mt="10"
                 spacing={4}
                 direction="row"
@@ -83,7 +86,7 @@ export default function ContactUsButton() {
                   fontSize={["sm", "lg"]}
                   fontWeight={["light", "semibold"]}
                   w="100%"
-                  p={["2", "5"]}
+                  p={["2", "3"]}
                   isExternal
                   bgColor="teal"
                   textAlign="center"
@@ -101,7 +104,7 @@ export default function ContactUsButton() {
                   fontSize={["sm", "lg"]}
                   fontWeight={["light", "semibold"]}
                   w="100%"
-                  p={["2", "5"]}
+                  p={["2", "3"]}
                   bgColor="teal"
                   textAlign="center"
                   to="/contact-us"
