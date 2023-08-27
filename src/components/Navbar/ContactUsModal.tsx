@@ -54,10 +54,7 @@ export default function ContactUsButton() {
                 <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
                   Your story, Our Expertise.
                 </Text>
-                <Text fontWeight="semibold" fontSize={["3xl", "5xl"]}>
-                  Connect with Us.
-                </Text>
-                <Text fontWeight="semibold" fontSize={["3xl", "5xl"]}>
+                <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
                   Let&apos;s Script Success!
                 </Text>
               </Flex>
