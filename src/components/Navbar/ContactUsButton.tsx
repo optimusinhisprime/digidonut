@@ -10,18 +10,19 @@ import {
   Text,
   Flex,
   Stack,
+  Link as ChakraLink,
+  LinkProps,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export default function ContactUsButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hovered, setHovered] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <>
       <Button
-        w="15%"
+        w={["15%"]}
         borderRadius="full"
         _hover={{
           color: "blue",
@@ -38,48 +39,75 @@ export default function ContactUsButton() {
         <ModalOverlay />
         <ModalContent background="">
           <ModalCloseButton color="white" />
-          <ModalBody borderRadius="3xl" p="10" bgColor="#161616" color="white">
+          <ModalBody
+            borderRadius="3xl"
+            p={["4", "10"]}
+            bgColor="#161616"
+            color="white"
+          >
             <Flex
               direction="column"
               justifyContent="center"
               alignItems="center"
             >
-              <Flex p="10" textAlign="center" direction="column">
-                <Text fontWeight="semibold" fontSize="6xl">
+              <Flex p={["4", "10"]} textAlign="center" direction="column">
+                <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
                   Drop Us a Line. Share Your Vision.
                 </Text>
-                <Text fontWeight="semibold" fontSize="6xl">
+                <Text fontWeight="semibold" fontSize={["3xl", "6xl"]}>
                   Let&apos;s Make Digital Magic!
                 </Text>
               </Flex>
 
-              <Text mt="2" textAlign="center" w="80%" fontSize="lg">
+              <Text mt="2" textAlign="center" w="80%" fontSize={["sm", "lg"]}>
                 Whether you&apos;re aiming to make a lasting impact through a
                 long-term collaboration or seeking the ideal partner for your
                 project, we&apos;ve got the perfect plan to cater to your unique
                 needs.
               </Text>
 
-              <Stack mt="10" spacing={4} direction="row" align="center">
-                <Button borderRadius="full" colorScheme="teal" size="lg">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://calendly.com/digidonutstudio"
-                  >
-                    Book a Meeting
-                  </a>
-                </Button>
-                <Button
-                  onClick={() => {
-                    navigate("/contact-us");
+              <Stack
+                w={["100%", "70%"]}
+                mt="10"
+                spacing={4}
+                direction="row"
+                align="center"
+              >
+                <ChakraLink
+                  _hover={{
+                    textDecoration: "none",
+                    // bgColor: "red",
                   }}
-                  borderRadius="full"
-                  colorScheme="teal"
-                  size="lg"
+                  as={ReactRouterLink}
+                  borderRadius={["3xl", "full"]}
+                  fontSize={["sm", "lg"]}
+                  fontWeight={["light", "semibold"]}
+                  w="100%"
+                  p={["2", "5"]}
+                  isExternal
+                  bgColor="teal"
+                  textAlign="center"
+                  to="https://calendly.com/digidonutstudio"
+                >
+                  Book a Meeting
+                </ChakraLink>
+                <ChakraLink
+                  _hover={{
+                    textDecoration: "none",
+                    // bgColor: "red",
+                  }}
+                  as={ReactRouterLink}
+                  borderRadius={["3xl", "full"]}
+                  fontSize={["sm", "lg"]}
+                  fontWeight={["light", "semibold"]}
+                  w="100%"
+                  p={["2", "5"]}
+                  bgColor="teal"
+                  textAlign="center"
+                  to="/contact-us"
                 >
                   Write to DigiDonut
-                </Button>
+                </ChakraLink>
               </Stack>
             </Flex>
           </ModalBody>
