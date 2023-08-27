@@ -3,21 +3,25 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
   Button,
   Text,
+  Flex,
+  Stack,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 
 export default function ContactUsButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
       <Button
+        w="15%"
         borderRadius="full"
         _hover={{
           color: "blue",
@@ -32,51 +36,52 @@ export default function ContactUsButton() {
 
       <Modal onClose={onClose} size="6xl" isOpen={isOpen}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
-              ullamco deserunt aute id consequat veniam incididunt duis in sint
-              irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit
-              officia tempor esse quis. Sunt ad dolore quis aute consequat.
-              Magna exercitation reprehenderit magna aute tempor cupidatat
-              consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-              incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-              aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi
-              consectetur esse laborum eiusmod pariatur proident Lorem eiusmod
-              et. Culpa deserunt nostrud ad veniam. Est velit labore esse esse
-              cupidatat. Velit id elit consequat minim. Mollit enim excepteur ea
-              laboris adipisicing aliqua proident occaecat do do adipisicing
-              adipisicing ut fugiat. Consequat pariatur ullamco aute sunt esse.
-              Irure excepteur eu non eiusmod. Commodo commodo et ad ipsum elit
-              esse pariatur sit adipisicing sunt excepteur enim. Incididunt duis
-              commodo mollit esse veniam non exercitation dolore occaecat ea
-              nostrud laboris. Adipisicing occaecat fugiat fugiat irure fugiat
-              in magna non consectetur proident fugiat. Commodo magna et aliqua
-              elit sint cupidatat. Sint aute ullamco enim cillum anim ex. Est
-              eiusmod commodo occaecat consequat laboris est do duis. Enim
-              incididunt non culpa velit quis aute in elit magna ullamco in
-              consequat ex proident. Dolore incididunt mollit fugiat pariatur
-              cupidatat ipsum laborum cillum. Commodo consequat velit cupidatat
-              duis ex nisi non aliquip ad ea pariatur do culpa. Eiusmod proident
-              adipisicing tempor tempor qui pariatur voluptate dolor do ea
-              commodo. Veniam voluptate cupidatat ex nisi do ullamco in quis
-              elit. Cillum proident veniam cupidatat pariatur laborum tempor
-              cupidatat anim eiusmod id nostrud pariatur tempor reprehenderit.
-              Do esse ullamco laboris sunt proident est ea exercitation
-              cupidatat. Do Lorem eiusmod aliqua culpa ullamco consectetur
-              veniam voluptate cillum. Dolor consequat cillum tempor laboris
-              mollit laborum reprehenderit reprehenderit veniam aliqua deserunt
-              cupidatat consequat id. Est id tempor excepteur enim labore sint
-              aliquip consequat duis minim tempor proident. Dolor incididunt
-              aliquip minim elit ea. Exercitation non officia eu id. Ipsum ipsum
-              consequat incididunt do aliquip pariatur nostrud. Qui ut sint
-              culpa labore Lorem. Magna deserunt aliquip aute duis consectetur
-              magna amet anim. Magna fugiat est nostrud veniam. Officia duis ea
-              sunt aliqua.
-            </Text>
+        <ModalContent background="">
+          <ModalCloseButton color="white" />
+          <ModalBody borderRadius="3xl" p="10" bgColor="#161616" color="white">
+            <Flex
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Flex p="10" textAlign="center" direction="column">
+                <Text fontWeight="semibold" fontSize="6xl">
+                  Drop Us a Line. Share Your Vision.
+                </Text>
+                <Text fontWeight="semibold" fontSize="6xl">
+                  Let&apos;s Make Digital Magic!
+                </Text>
+              </Flex>
+
+              <Text mt="2" textAlign="center" w="80%" fontSize="lg">
+                Whether you&apos;re aiming to make a lasting impact through a
+                long-term collaboration or seeking the ideal partner for your
+                project, we&apos;ve got the perfect plan to cater to your unique
+                needs.
+              </Text>
+
+              <Stack mt="10" spacing={4} direction="row" align="center">
+                <Button borderRadius="full" colorScheme="teal" size="lg">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://calendly.com/digidonutstudio"
+                  >
+                    Book a Meeting
+                  </a>
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/contact-us");
+                  }}
+                  borderRadius="full"
+                  colorScheme="teal"
+                  size="lg"
+                >
+                  Write to DigiDonut
+                </Button>
+              </Stack>
+            </Flex>
           </ModalBody>
         </ModalContent>
       </Modal>
