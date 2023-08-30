@@ -1,8 +1,15 @@
 import { Flex } from "@chakra-ui/layout";
 import { Text, useRadioGroup } from "@chakra-ui/react";
-import FormItem from "./FormItem";
+import FormItem from "./BudgetFormItem";
+import { SetStateAction } from "react";
 
-export default function CustomerBudget() {
+interface CustomerBudgetProps {
+  setCustomerBudget: React.Dispatch<SetStateAction<String>>;
+}
+
+export default function CustomerBudget({
+  setCustomerBudget,
+}: CustomerBudgetProps) {
   const budgetRanges = [
     "Less than P1K",
     "P1K - P3K",
@@ -23,7 +30,13 @@ export default function CustomerBudget() {
       </Text>
       <Flex mt="5" flexWrap={["wrap"]}>
         {budgetRanges.map((budgetRange) => {
-          return <FormItem key={budgetRange} title={budgetRange} />;
+          return (
+            <FormItem
+              setCustomerBudget={setCustomerBudget}
+              key={budgetRange}
+              title={budgetRange}
+            />
+          );
         })}
       </Flex>
     </Flex>

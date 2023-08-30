@@ -1,9 +1,15 @@
 import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
-import React from "react";
-import FormItem from "./FormItem";
+import React, { SetStateAction } from "react";
+import FormItem from "./ServicesFormItem";
 
-export default function ServicesOffered() {
+interface ServicesOfferedProps {
+  setServicesWanted: React.Dispatch<SetStateAction<String[]>>;
+}
+
+export default function ServicesOffered({
+  setServicesWanted,
+}: ServicesOfferedProps) {
   const servicesOfferedList = [
     "Logo & Branding",
     "Website",
@@ -28,7 +34,13 @@ export default function ServicesOffered() {
       </Text>
       <Flex mt="5" flexWrap="wrap">
         {servicesOfferedList.map((service) => {
-          return <FormItem key={service} title={service} />;
+          return (
+            <FormItem
+              setServicesWanted={setServicesWanted}
+              key={service}
+              title={service}
+            />
+          );
         })}
       </Flex>
     </Flex>
