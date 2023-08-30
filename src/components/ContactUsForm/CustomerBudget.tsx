@@ -12,15 +12,16 @@ export default function CustomerBudget() {
   ];
   return (
     <Flex
+      p="5"
       direction="column"
       justifyItems="center"
       bgColor="#f9f9f9"
       borderRadius="3xl"
     >
-      <Text fontWeight="semibold" fontSize="3xl">
+      <Text fontWeight="semibold" fontSize={["md", "lg", "2xl", "3xl"]}>
         Estimate your budget
       </Text>
-      <Flex mt="5" flexWrap="wrap">
+      <Flex mt="5" flexWrap={["wrap"]}>
         {budgetRanges.map((budgetRange) => {
           return <FormItem key={budgetRange} title={budgetRange} />;
         })}

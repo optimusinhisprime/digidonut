@@ -23,7 +23,7 @@ export default function ServicesOffered() {
       bgColor="#f9f9f9"
       borderRadius="3xl"
     >
-      <Text fontWeight="semibold" fontSize="3xl">
+      <Text fontWeight="semibold" fontSize={["md", "lg", "2xl", "3xl"]}>
         Choose What You Need
       </Text>
       <Flex mt="5" flexWrap="wrap">
