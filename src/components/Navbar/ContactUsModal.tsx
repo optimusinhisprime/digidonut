@@ -14,6 +14,7 @@ import {
   LinkProps,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function ContactUsButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -89,8 +90,14 @@ export default function ContactUsButton() {
                   textAlign="center"
                   to="https://calendly.com/digidonutstudio"
                 >
-                  Book a Meeting
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    Book a Meeting
+                  </motion.button>
                 </ChakraLink>
+
                 <ChakraLink
                   _hover={{
                     textDecoration: "none",
@@ -106,7 +113,12 @@ export default function ContactUsButton() {
                   textAlign="center"
                   to="/contact-us"
                 >
-                  Write to DigiDonut
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    Write to DigiDonut
+                  </motion.button>
                 </ChakraLink>
               </Stack>
             </Flex>
