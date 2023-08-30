@@ -8,6 +8,7 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
+import FileUploadControl from "./FileUploadControl";
 
 export default function ProjectDetails() {
   return (
@@ -48,6 +49,9 @@ export default function ProjectDetails() {
           </FormControl>
         </Flex>
         {/* Useful Project Files */}
+        <Flex justifyContent="center" p={["1", "3"]}>
+          <FileUploadControl />
+        </Flex>
 
         {/* Project Description */}
         <Flex p={["1", "3"]}>

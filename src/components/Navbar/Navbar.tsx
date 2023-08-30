@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ContactUsModal from "./ContactUsModal";
 import { Flex } from "@chakra-ui/layout";
-import { Avatar, Image, Text } from "@chakra-ui/react";
+import { Image, Text } from "@chakra-ui/react";
 import SiteLogo from "../../images/site-logo.png";
 
 export default function Navbar() {
