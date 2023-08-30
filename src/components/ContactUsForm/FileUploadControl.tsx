@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { UseFormRegister, FieldValues } from "react-hook-form";
 
-const FileUploadControl: React.FC = () => {
+interface FileUploadControlProps {
+  register: UseFormRegister<FieldValues>;
+}
+
+const FileUploadControl = ({ register }: FileUploadControlProps) => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,12 +47,13 @@ const FileUploadControl: React.FC = () => {
             textDecoration="underline"
             colorScheme="teal"
             as="label"
-            htmlFor="fileInput"
+            htmlFor="projectFiles"
           >
             Browse
           </Text>
           <input
-            id="fileInput"
+            id="projectFiles"
+            {...register("projectFiles")}
             type="file"
             multiple
             style={{ display: "none" }}
