@@ -1,11 +1,16 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { SetStateAction } from "react";
 
-interface FormItemProps {
+interface ServicesFormItemProps {
   title: string;
+  setServicesWanted: React.Dispatch<SetStateAction<String[]>>;
 }
 
-export default function FormItem({ title }: FormItemProps) {
+export default function ServicesFormItem({
+  title,
+  setServicesWanted,
+}: ServicesFormItemProps) {
   return (
     <Flex
       justifyContent="center"

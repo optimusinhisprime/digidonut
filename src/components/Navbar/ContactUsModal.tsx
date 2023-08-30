@@ -11,7 +11,6 @@ import {
   Flex,
   Stack,
   Link as ChakraLink,
-  LinkProps,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
