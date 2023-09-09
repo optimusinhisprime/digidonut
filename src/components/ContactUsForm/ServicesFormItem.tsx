@@ -1,10 +1,11 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { SetStateAction } from "react";
+import { ServicesWanted } from "../../pages/ContactUs";
 
 interface ServicesFormItemProps {
   title: string;
-  setServicesWanted: React.Dispatch<SetStateAction<String[]>>;
+  setServicesWanted: React.Dispatch<React.SetStateAction<ServicesWanted>>;
 }
 
 export default function ServicesFormItem({
@@ -12,18 +13,17 @@ export default function ServicesFormItem({
   setServicesWanted,
 }: ServicesFormItemProps) {
   return (
-    <Flex
-      justifyContent="center"
-      cursor="pointer"
-      p={["1", "3"]}
-      m={["1", "5"]}
-      border="1px solid"
-      borderRadius="full"
-      maxW={["40%"]}
-    >
-      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Text fontSize={["xs", "sm"]}> {title}</Text>
-      </motion.button>
+    <Flex justifyContent="center" color={"black"} onClick={() => {}}>
+      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <Button
+          color="black"
+          // colorScheme="teal"
+          borderRadius="3xl"
+          fontSize={["xs", "sm"]}
+        >
+          {title}
+        </Button>
+      </motion.div>
     </Flex>
   );
 }

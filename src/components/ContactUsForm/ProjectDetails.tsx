@@ -16,6 +16,7 @@ import {
   FieldErrors,
 } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { SetStateAction } from "react";
 
 interface ProjectDetailsProps {
   register: UseFormRegister<FieldValues>;
@@ -29,12 +30,16 @@ interface ProjectDetailsProps {
       | RegisterOptions<FieldValues, "projectDescription">
       | undefined;
   };
+  selectedFiles: File[];
+  setSelectedFiles: React.Dispatch<SetStateAction<File[]>>;
 }
 
 export default function ProjectDetails({
   register,
   errors,
   uploadErrors,
+  selectedFiles,
+  setSelectedFiles,
 }: ProjectDetailsProps) {
   return (
     <Flex
@@ -60,7 +65,11 @@ export default function ProjectDetails({
             <ErrorMessage
               errors={errors}
               name="firstName"
-              render={({ message }) => <Text color="red">{message}</Text>}
+              render={({ message }) => (
+                <Text fontSize={["xs", "sm"]} color="red">
+                  {message}
+                </Text>
+              )}
             />
           </FormControl>
           <FormControl textAlign="left" m="2" w={["100%", "50%"]}>
@@ -73,7 +82,11 @@ export default function ProjectDetails({
             <ErrorMessage
               errors={errors}
               name="lastName"
-              render={({ message }) => <Text color="red">{message}</Text>}
+              render={({ message }) => (
+                <Text fontSize={["xs", "sm"]} color="red">
+                  {message}
+                </Text>
+              )}
             />
           </FormControl>
         </Flex>
@@ -89,7 +102,11 @@ export default function ProjectDetails({
             <ErrorMessage
               errors={errors}
               name="companyName"
-              render={({ message }) => <Text color="red">{message}</Text>}
+              render={({ message }) => (
+                <Text fontSize={["xs", "sm"]} color="red">
+                  {message}
+                </Text>
+              )}
             />
           </FormControl>
           <FormControl textAlign="left" m="2" w={["100%", "50%"]}>
@@ -102,13 +119,20 @@ export default function ProjectDetails({
             <ErrorMessage
               errors={errors}
               name="companyEmail"
-              render={({ message }) => <Text color="red">{message}</Text>}
+              render={({ message }) => (
+                <Text fontSize={["xs", "sm"]} color="red">
+                  {message}
+                </Text>
+              )}
             />
           </FormControl>
         </Flex>
         {/* Useful Project Files */}
         <Flex justifyContent="center" p={["1", "3"]}>
-          <FileUploadControl register={register} />
+          <FileUploadControl
+            selectedFiles={selectedFiles}
+            setSelectedFiles={setSelectedFiles}
+          />
         </Flex>
 
         {/* Project Description */}
@@ -127,7 +151,11 @@ export default function ProjectDetails({
             <ErrorMessage
               errors={errors}
               name="projectDescription"
-              render={({ message }) => <Text color="red">{message}</Text>}
+              render={({ message }) => (
+                <Text fontSize={["xs", "sm"]} color="red">
+                  {message}
+                </Text>
+              )}
             />
           </FormControl>
         </Flex>

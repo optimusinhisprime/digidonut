@@ -2,9 +2,10 @@ import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
 import React, { SetStateAction } from "react";
 import FormItem from "./ServicesFormItem";
+import { ServicesWanted } from "../../pages/ContactUs";
 
 interface ServicesOfferedProps {
-  setServicesWanted: React.Dispatch<SetStateAction<String[]>>;
+  setServicesWanted: React.Dispatch<React.SetStateAction<ServicesWanted>>;
 }
 
 export default function ServicesOffered({
@@ -15,10 +16,6 @@ export default function ServicesOffered({
     "Website",
     "Mobile App",
     "Development",
-    "Research",
-    "Engineering",
-    "Data Analytics",
-    "Consultancy",
   ];
   return (
     <Flex
