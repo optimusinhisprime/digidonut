@@ -14,17 +14,25 @@ export default function Navbar() {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Flex alignItems="center" w="40%" justifyContent="space-evenly">
+      <Flex
+        onClick={() => {
+          navigate("/");
+        }}
+        alignItems="center"
+        cursor="pointer"
+      >
         <Image
-          onClick={() => {
-            navigate("/");
-          }}
-          cursor="pointer"
           boxSize="50px"
           objectFit="cover"
           src={SiteLogo}
           alt="Dan Abramov"
         />
+        <Text fontSize="large" fontWeight="bold" ml="2">
+          DigiDonut Studio
+        </Text>
+      </Flex>
+
+      <Flex w="40%" justifyContent="space-evenly">
         <Link to="/">
           <Text fontWeight="semibold">Home</Text>
         </Link>
@@ -32,7 +40,6 @@ export default function Navbar() {
         <Link to="/#services">Service</Link>
         <Link to="/#faq">FAQS</Link>
       </Flex>
-
       <ContactUsModal />
     </Flex>
   );

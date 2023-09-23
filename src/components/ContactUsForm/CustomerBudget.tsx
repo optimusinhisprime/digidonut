@@ -1,22 +1,18 @@
 import { Flex } from "@chakra-ui/layout";
-import { Text, useRadioGroup } from "@chakra-ui/react";
-import FormItem from "./BudgetFormItem";
+import { Text } from "@chakra-ui/react";
+import BudgetCardRadioGroup from "./BudgetCardRadioGroup";
 import { SetStateAction } from "react";
+import { UseFormRegister, FieldValues } from "react-hook-form";
 
 interface CustomerBudgetProps {
-  setCustomerBudget: React.Dispatch<SetStateAction<String>>;
+  setCustomerBudget: React.Dispatch<SetStateAction<string>>;
+  register: UseFormRegister<FieldValues>;
 }
 
 export default function CustomerBudget({
+  register,
   setCustomerBudget,
 }: CustomerBudgetProps) {
-  const budgetRanges = [
-    "Less than P1K",
-    "P1K - P3K",
-    "P3K - P7K",
-    "P7K - P10K",
-    "More than P10K",
-  ];
   return (
     <Flex
       p="5"
@@ -29,15 +25,7 @@ export default function CustomerBudget({
         Estimate your budget
       </Text>
       <Flex mt="5" flexWrap={["wrap"]}>
-        {budgetRanges.map((budgetRange) => {
-          return (
-            <FormItem
-              setCustomerBudget={setCustomerBudget}
-              key={budgetRange}
-              title={budgetRange}
-            />
-          );
-        })}
+        <BudgetCardRadioGroup register={register} />
       </Flex>
     </Flex>
   );

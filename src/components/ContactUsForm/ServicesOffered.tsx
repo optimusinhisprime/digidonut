@@ -2,24 +2,16 @@ import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
 import React, { SetStateAction } from "react";
 import FormItem from "./ServicesFormItem";
+import { ServicesWanted } from "../../pages/ContactUs";
+import ServicesOfferedCheckboxGroup from "./ServiceCardCheckboxGroup";
 
 interface ServicesOfferedProps {
-  setServicesWanted: React.Dispatch<SetStateAction<String[]>>;
+  setServicesWanted: React.Dispatch<React.SetStateAction<ServicesWanted>>;
 }
 
 export default function ServicesOffered({
   setServicesWanted,
 }: ServicesOfferedProps) {
-  const servicesOfferedList = [
-    "Logo & Branding",
-    "Website",
-    "Mobile App",
-    "Development",
-    "Research",
-    "Engineering",
-    "Data Analytics",
-    "Consultancy",
-  ];
   return (
     <Flex
       p="5"
@@ -33,15 +25,7 @@ export default function ServicesOffered({
         Choose What You Need
       </Text>
       <Flex mt="5" flexWrap="wrap">
-        {servicesOfferedList.map((service) => {
-          return (
-            <FormItem
-              setServicesWanted={setServicesWanted}
-              key={service}
-              title={service}
-            />
-          );
-        })}
+        <ServicesOfferedCheckboxGroup />
       </Flex>
     </Flex>
   );

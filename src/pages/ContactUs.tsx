@@ -8,6 +8,13 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+export interface ServicesWanted {
+  logoBranding: boolean;
+  website: boolean;
+  mobileApp: boolean;
+  development: boolean;
+}
+
 export default function ContactUs() {
   const {
     register,
@@ -16,10 +23,18 @@ export default function ContactUs() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const [servicesWanted, setServicesWanted] = useState<String[]>([]);
-  const [customerBudget, setCustomerBudget] = useState<String>("");
+  const [servicesWanted, setServicesWanted] = useState<ServicesWanted>({
+    logoBranding: false,
+    website: false,
+    mobileApp: false,
+    development: false,
+  });
+  const [customerBudget, setCustomerBudget] = useState<string>("");
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
   const onSubmit = (data: any) => {
+    data.projectFiles = selectedFiles;
+    data.customerBudget = customerBudget;
     console.log(data);
   };
 
@@ -65,11 +80,16 @@ export default function ContactUs() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing="24px" direction="column">
             <ServicesOffered setServicesWanted={setServicesWanted} />
-            <CustomerBudget setCustomerBudget={setCustomerBudget} />
+            <CustomerBudget
+              register={register}
+              setCustomerBudget={setCustomerBudget}
+            />
             <ProjectDetails
               register={register}
               errors={errors}
               uploadErrors={uploadError}
+              selectedFiles={selectedFiles}
+              setSelectedFiles={setSelectedFiles}
             />
           </Stack>
         </form>
