@@ -4,9 +4,9 @@ import { Stack, Text } from "@chakra-ui/react";
 import ServicesOffered from "../components/ContactUsForm/ServicesOffered";
 import CustomerBudget from "../components/ContactUsForm/CustomerBudget";
 import ProjectDetails from "../components/ContactUsForm/ProjectDetails";
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Footer from "../components/Footer/Footer";
 
 export interface ServicesWanted {
   logoBranding: boolean;
@@ -56,7 +56,7 @@ export default function ContactUs() {
     },
   };
   return (
-    <Flex mb="10" direction="column">
+    <Flex color="#01110A" direction="column">
       <Navbar />
       <Flex
         mt={["2", "6"]}
@@ -66,17 +66,12 @@ export default function ContactUs() {
         justifyContent="center"
         direction="column"
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9 }}
-        >
-          <Flex mb={["2"]} p={["1", "7"]} textAlign="center" direction="column">
-            <Text fontWeight="bold" fontSize={["3xl", "70px"]}>
-              Share Your Vision. Let&apos;s Make Digital Magic!
-            </Text>
-          </Flex>
-        </motion.div>
+        <Flex mb={["2"]} p={["1", "7"]} textAlign="center" direction="column">
+          <Text fontWeight="bold" fontSize={["3xl", "60px"]}>
+            Share Your Vision. Let&apos;s Make Digital Magic!
+          </Text>
+        </Flex>
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing="24px" direction="column">
             <ServicesOffered setServicesWanted={setServicesWanted} />
@@ -94,6 +89,7 @@ export default function ContactUs() {
           </Stack>
         </form>
       </Flex>
+      <Footer />
     </Flex>
   );
 }
