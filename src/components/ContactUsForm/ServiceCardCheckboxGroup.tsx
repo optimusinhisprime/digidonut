@@ -3,7 +3,6 @@ import {
   chakra,
   Flex,
   useCheckboxGroup,
-  Stack,
   Text,
   Box,
 } from "@chakra-ui/react";
@@ -48,7 +47,7 @@ export default function ServicesOfferedCheckboxGroup() {
     );
   }
 
-  const { value, getCheckboxProps } = useCheckboxGroup({
+  const { getCheckboxProps } = useCheckboxGroup({
     defaultValue: [""],
   });
 
@@ -56,7 +55,7 @@ export default function ServicesOfferedCheckboxGroup() {
     "Logo & Branding",
     "Website",
     "Mobile App",
-    "Development",
+    "Consultancy",
   ];
 
   return (
