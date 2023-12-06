@@ -8,20 +8,6 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsSticky(scrollPosition > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <Flex
@@ -30,12 +16,6 @@ export default function Navbar() {
       color={"#F2F4F3"}
       justifyContent="space-between"
       alignItems="center"
-      position={isSticky ? "fixed" : "relative"}
-      top="0"
-      left="0"
-      right="0"
-      zIndex="1000"
-      transition="background-color 0.3s, color 0.3s"
     >
       <Flex alignItems="center" cursor="pointer">
         <Image
@@ -57,11 +37,16 @@ export default function Navbar() {
       </Flex>
 
       <Flex w="40%" justifyContent="space-evenly">
-        <Link to="hero" smooth={true} duration={500}>
-          <Text cursor="pointer" fontWeight="semibold">
-            Home
-          </Text>
-        </Link>
+        <Text
+          onClick={() => {
+            navigate("/");
+          }}
+          cursor="pointer"
+          fontWeight="semibold"
+        >
+          Home
+        </Text>
+
         <Link to="why-us" smooth={true} duration={500}>
           <Text cursor="pointer">Why Us</Text>
         </Link>
