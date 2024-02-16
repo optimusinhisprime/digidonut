@@ -11,8 +11,8 @@ export default function LandingPage() {
       <Navbar />
       <Hero id="hero" />
       <WhyUs id="why-us" />
-      <ServicesProvided id="services" />
-      <FrequentlyAskedQuestions id="faq" />
+      {/* <ServicesProvided id="services" /> */}
+      {/* <FrequentlyAskedQuestions id="faq" /> */}
       <Footer />
     </div>
   );
