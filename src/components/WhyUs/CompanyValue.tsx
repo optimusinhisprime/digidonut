@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CompanyValue({ imageSrc, title, description }: any) {
   return (
-    <Flex alignItems="center" w="30%" flexDir="column">
+    <Flex alignItems="center" w={["100%", "30%"]} flexDir="column">
       <Image src={imageSrc} />
 
       <Heading mb="2" size="md">
