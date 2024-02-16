@@ -31,11 +31,11 @@ export default function BudgetCardRadioGroup({
   register,
 }: BudgetCardRadioGroupProps) {
   const budgetRanges = [
-    "Less than P1K",
-    "P1K - P3K",
-    "P3K - P7K",
-    "P7K - P10K",
-    "More than P10K",
+    "Less than P5K",
+    "P5K - P15K",
+    "P15K - P25K",
+    "P25K - P40K",
+    "More than P40K",
   ];
 
   const handleChange = (value: any) => {

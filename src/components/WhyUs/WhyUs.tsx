@@ -25,7 +25,12 @@ export default function WhyUs({ id }: WhyUsProps) {
         We understand that your success is our success, and we're committed to
         providing the creative solutions that drive your business forward.
       </Text>
-      <Flex mt="10" w="90%" justifyContent="space-between">
+      <Flex
+        flexDir={["column", "row"]}
+        mt="10"
+        w="90%"
+        justifyContent="space-between"
+      >
         <CompanyValue
           imageSrc={TailoredSolutionsImage}
           title="Tailored Solutions"

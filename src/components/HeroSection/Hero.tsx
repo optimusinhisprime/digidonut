@@ -1,61 +1,95 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import HumanMachineCollaboImage from "../../images/digital-marketing-specialist-giving-a-presentation.png";
-import HappyClient from "../../images/employee-life-cycle.png";
-import ClientCollaboration from "../../images/people-and-technology.png";
-import HappyUser from "../../images/gender-equality-week.png";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Flex, Heading, Text, Box } from "@chakra-ui/react";
+import Project1 from "../../images/project1.jpg";
+import Project2 from "../../images/project2.jpg";
+import Project3 from "../../images/project3.jpg";
+import Project4 from "../../images/project4.jpg";
+
+import PortfolioProject from "../PortfolioProject";
 
 interface HeroProps {
   id: string;
 }
 
+const projectOneServicesRendered = ["Branding, Consultancy"];
+const projectTwoServicesRendered = ["Website, Branding"];
+const projectThreeServicesRendered = [" Consultancy"];
+const projectFourServicesRendered = ["Mobile App, Branding"];
+
 export default function Hero({ id }: HeroProps) {
   return (
-    <Flex id={id} bgColor="#BBCBCB" flexDir="row" color="#01110A">
-      <Flex flexDir="column">
-        <Box ml="5" boxSize="sm">
-          <Image src={HappyClient} />
-        </Box>
-        <Box ml="10" boxSize="xs">
-          <Image src={ClientCollaboration} />
-        </Box>
-      </Flex>
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        w="60%"
-        textAlign="center"
-        flexDir="column"
-      >
-        <Heading size="3xl">
-          Elevate Your Brand with Stunning Design & Tech Expertise
-        </Heading>
-        <Text mt="5" w="80%">
-          We believe in the transformative potential of technology and design,
-          and we're here to harness it on your behalf.
-        </Text>
-        <Button
-          as={ReactRouterLink}
-          rightIcon={<AiOutlineArrowRight />}
-          colorScheme="teal"
-          variant="solid"
-          borderRadius="full"
-          size="lg"
-          w="60%"
-          to="/contact-us"
-          mt="10"
+    <Flex
+      px={{ "2xl": "40" }}
+      id={id}
+      bgColor="#000807"
+      color="white"
+      flexDir={"column"}
+    >
+      <Flex flexDir={"column"}>
+        <Flex
+          mx="10"
+          my={2}
+          textAlign={"start"}
+          flexDir="column"
+          w={{
+            base: "85%",
+            sm: "80%",
+            md: "100%",
+            lg: "100%",
+            xl: "60%",
+            "2xl": "55%",
+          }}
         >
-          Let&apos;s Get Started
-        </Button>
-      </Flex>
-      <Flex flexDir="column">
-        <Box mt="10" mr="10" boxSize="xs">
-          <Image src={HumanMachineCollaboImage} />
+          <Heading
+            my="3"
+            textAlign={{ base: "start", xl: "start", "2xl": "start" }}
+            size={{ base: "xl", xl: "4xl", "2xl": "4xl" }}
+          >
+            A Design and Tech Studio for Your Startup's Success.
+          </Heading>
+          <Text fontSize={{ base: "sm", xl: "lg", "2xl": "large" }} mt="5">
+            Secure Your Place, Design Your Tomorrow With Us —
+          </Text>
+          <Text mb="5" fontSize={{ base: "sm", xl: "lg", "2xl": "large" }}>
+            Let Your Ideas Find A Home and Take Shape.
+          </Text>
+        </Flex>
+        <Box mx="10" textAlign="start">
+          <Heading textDecoration="underline" size={["sm", "md"]}>
+            Our Latest Engagements:
+          </Heading>
         </Box>
-        <Box mt="10" boxSize="xs">
-          <Image src={HappyUser} />
-        </Box>
+        <Flex
+          justifyContent="space-between"
+          mx="10"
+          my={10}
+          flexDir="row"
+          flexWrap={{ base: "wrap" }}
+        >
+          <PortfolioProject
+            imageSrc={Project1}
+            projectNum="00-1"
+            servicesRendered={projectOneServicesRendered}
+            companyName="Sunrise Financial Group"
+          />
+          <PortfolioProject
+            imageSrc={Project2}
+            projectNum="00-2"
+            servicesRendered={projectTwoServicesRendered}
+            companyName="Serenity Spa Retreat"
+          />
+          <PortfolioProject
+            imageSrc={Project3}
+            projectNum="00-3"
+            servicesRendered={projectThreeServicesRendered}
+            companyName="Ruma Energy"
+          />
+          <PortfolioProject
+            imageSrc={Project4}
+            projectNum="00-4"
+            servicesRendered={projectFourServicesRendered}
+            companyName="VoxAI"
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

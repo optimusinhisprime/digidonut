@@ -52,8 +52,9 @@ export default function ServicesOfferedCheckboxGroup() {
   });
 
   const servicesOfferedList = [
-    "Logo & Branding",
+    "Branding",
     "Website",
+    "Web App",
     "Mobile App",
     "Consultancy",
   ];
