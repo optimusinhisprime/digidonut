@@ -22,10 +22,9 @@ export default function PortfolioProject({
             cursor="pointer"
             boxSize={{
               "2xl": "340px",
-              xl: "300px",
+              xl: "250px",
+              sm: "170px",
               base: "130px",
-              md: "200px",
-              sm: "160px",
             }}
             objectFit="cover"
             src={imageSrc}
