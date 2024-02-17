@@ -20,7 +20,12 @@ export default function PortfolioProject({
         <Box>
           <Image
             cursor="pointer"
-            boxSize={{ "2xl": "340px", xl: "300px", base: "130px" }}
+            boxSize={{
+              "2xl": "340px",
+              xl: "300px",
+              base: "130px",
+              md: "200px",
+            }}
             objectFit="cover"
             src={imageSrc}
             alt="Dan Abramov"

@@ -34,8 +34,8 @@ export default function Hero({ id }: HeroProps) {
           w={{
             base: "85%",
             sm: "80%",
-            md: "100%",
-            lg: "100%",
+            md: "58%",
+            lg: "55%",
             xl: "60%",
             "2xl": "55%",
           }}
@@ -43,7 +43,7 @@ export default function Hero({ id }: HeroProps) {
           <Heading
             my="3"
             textAlign={{ base: "start", xl: "start", "2xl": "start" }}
-            size={{ base: "xl", xl: "4xl", "2xl": "4xl" }}
+            size={{ base: "xl", xl: "4xl", "2xl": "4xl", lg: "2xl" }}
           >
             A Design and Tech Studio for Your Startup's Success.
           </Heading>
@@ -60,7 +60,7 @@ export default function Hero({ id }: HeroProps) {
           </Heading>
         </Box>
         <Flex
-          justifyContent="space-between"
+          justifyContent={"space-between"}
           mx="10"
           my={10}
           flexDir="row"
