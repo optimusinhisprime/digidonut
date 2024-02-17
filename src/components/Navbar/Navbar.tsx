@@ -36,7 +36,13 @@ export default function Navbar() {
       alignItems="center"
       px={{ base: 10, xl: 10, "2xl": 40 }}
     >
-      <Flex alignItems="center" cursor="pointer">
+      <Flex
+        onClick={() => {
+          navigate("/");
+        }}
+        alignItems="center"
+        cursor="pointer"
+      >
         <Image
           boxSize="50px"
           objectFit="cover"
@@ -44,14 +50,7 @@ export default function Navbar() {
           alt="DigiDonut Studio"
         />
         <Hide below="md">
-          <Text
-            onClick={() => {
-              navigate("/");
-            }}
-            fontSize="large"
-            fontFamily="ShantyHouse"
-            ml="2"
-          >
+          <Text fontSize="large" fontFamily="ShantyHouse" ml="2">
             igiDonut Studio
           </Text>
         </Hide>

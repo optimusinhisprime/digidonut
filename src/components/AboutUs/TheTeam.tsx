@@ -6,18 +6,28 @@ export default function TheTeam() {
   const teamMembers = [
     {
       name: "Phomolo Phiri",
-      role: "CEO",
+      role: "Founding Partner",
+      image: CEOImage,
+    },
+    {
+      name: "Will Kwelagobe",
+      role: "Coding Partner",
+      image: CEOImage,
+    },
+    {
+      name: "Pelonomi Phiri",
+      role: "Design Partner",
       image: CEOImage,
     },
 
     // Add more team members as needed
   ];
   return (
-    <Box py="16">
-      <Heading mb="8" textAlign="center">
+    <Box mx={{ "2xl": 20, xl: 10 }} py="10">
+      <Heading mb="8" textAlign="center" size={["xl", "2xl", "2xl"]}>
         Meet the Team
       </Heading>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="8">
+      <SimpleGrid columns={{ base: 2, sm: 2, md: 2, lg: 3 }} spacing="4">
         {teamMembers.map((member, index) => (
           <TeamMember key={index} {...member} />
         ))}

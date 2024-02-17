@@ -1,5 +1,5 @@
 import React, { SetStateAction, useState } from "react";
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Stack, Text, VStack } from "@chakra-ui/react";
 
 interface FileUploadControlProps {
   selectedFiles: File[];
@@ -27,8 +27,8 @@ const FileUploadControl = ({
 
   return (
     <VStack w="100%" spacing={4} align="center">
-      <Text fontSize={["xs", "lg"]}>Choose files</Text>
       <Box
+        my="4"
         p={6}
         w="100%"
         borderWidth={2}
@@ -39,9 +39,14 @@ const FileUploadControl = ({
         onDragOver={handleDragOver}
         cursor="pointer"
       >
-        <HStack color="grey" spacing={["5px", "10px"]} justifyContent="center">
+        <Stack
+          direction={["column", "column", "row"]}
+          color="grey"
+          spacing={["5px", "10px"]}
+          justifyContent="center"
+        >
           <Text fontSize={["xs", "lg"]} textAlign="center">
-            Drag & Drop your files or
+            Drag & Drop Your Project files or
           </Text>
           <Text
             fontSize={["xs", "lg"]}
@@ -50,7 +55,7 @@ const FileUploadControl = ({
             as="label"
             htmlFor="projectFiles"
           >
-            Browse
+            Browse Files
           </Text>
           <input
             id="projectFiles"
@@ -59,7 +64,7 @@ const FileUploadControl = ({
             style={{ display: "none" }}
             onChange={handleFileChange}
           />
-        </HStack>
+        </Stack>
       </Box>
       {selectedFiles.length > 0 && (
         <Box>

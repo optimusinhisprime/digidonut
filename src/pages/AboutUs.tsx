@@ -7,11 +7,11 @@ import Reviews from "../components/AboutUs/Reviews";
 
 export default function AboutUs() {
   return (
-    <Flex color="#01110A" direction="column">
+    <Flex h="100vh" color="#01110A" direction="column">
       <Navbar />
       <History />
       <TheTeam />
-      <Reviews />
+      {/* <Reviews /> */}
       <Footer />
     </Flex>
   );

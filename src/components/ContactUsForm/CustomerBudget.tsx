@@ -21,8 +21,12 @@ export default function CustomerBudget({
       bgColor="#f9f9f9"
       borderRadius="3xl"
     >
-      <Text fontWeight="semibold" fontSize={["md", "lg", "2xl", "3xl"]}>
-        Estimate your budget
+      <Text
+        textAlign="start"
+        fontWeight="semibold"
+        fontSize={{ base: "md", sm: "lg", xl: "2xl", "2xl": "3xl" }}
+      >
+        Estimate your budget:
       </Text>
       <Flex mt="5" flexWrap={["wrap"]}>
         <BudgetCardRadioGroup register={register} />

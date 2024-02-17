@@ -25,6 +25,7 @@ export default function ServicesOfferedCheckboxGroup() {
         rounded="lg"
         px={3}
         py={1}
+        mx="2"
         cursor="pointer"
         {...htmlProps}
       >
@@ -60,7 +61,7 @@ export default function ServicesOfferedCheckboxGroup() {
   ];
 
   return (
-    <Flex direction="row">
+    <Flex direction={["column", "column", "row"]}>
       {servicesOfferedList.map((service) => {
         return <CustomCheckbox {...getCheckboxProps({ value: service })} />;
       })}
