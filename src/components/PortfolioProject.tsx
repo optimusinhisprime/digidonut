@@ -22,9 +22,9 @@ export default function PortfolioProject({
             cursor="pointer"
             boxSize={{
               "2xl": "340px",
-              xl: "300px",
+              xl: "250px",
+              sm: "170px",
               base: "130px",
-              md: "200px",
             }}
             objectFit="cover"
             src={imageSrc}
@@ -44,8 +44,10 @@ export default function PortfolioProject({
         </Box>
       </Flex>
       <Flex flexDir="row">
-        {servicesRendered?.map((service) => (
-          <Text fontSize={{ base: "12" }}>{service}</Text>
+        {servicesRendered?.map((service, index) => (
+          <Text key={index} fontSize={{ base: "12" }}>
+            {service}
+          </Text>
         ))}
       </Flex>
       <Text fontSize={{ "2xl": 20, xl: 18, base: "14" }} textAlign="start">

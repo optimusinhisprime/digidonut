@@ -35,15 +35,15 @@ export default function Hero({ id }: HeroProps) {
             base: "85%",
             sm: "80%",
             md: "58%",
-            lg: "55%",
-            xl: "60%",
+            lg: "60%",
+            xl: "67%",
             "2xl": "55%",
           }}
         >
           <Heading
             my="3"
             textAlign={{ base: "start", xl: "start", "2xl": "start" }}
-            size={{ base: "xl", xl: "4xl", "2xl": "4xl", lg: "2xl" }}
+            size={{ base: "xl", xl: "3xl", "2xl": "4xl", lg: "2xl" }}
           >
             A Design and Tech Studio for Your Startup's Success.
           </Heading>

@@ -23,6 +23,30 @@ import { LuLayoutGrid } from "react-icons/lu";
 import SiteLogo from "../../images/site-logo.png";
 import { useNavigate } from "react-router-dom";
 
+const scrollToElement = (elementId: any) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+const ServicesLink = ({ to, children }: any) => {
+  const handleClick = () => {
+    scrollToElement(to);
+  };
+
+  return (
+    <MenuItem
+      bgColor="#000807"
+      icon={<MdWorkspaces size={15} />}
+      onClick={handleClick}
+      cursor="pointer"
+    >
+      {children}
+    </MenuItem>
+  );
+};
+
 export default function Navbar() {
   const navigate = useNavigate();
 
@@ -83,11 +107,10 @@ export default function Navbar() {
             >
               Projects
             </MenuItem>
-            <MenuItem bgColor="#000807" icon={<MdWorkspaces size={15} />}>
-              <Link to="why-us" smooth={true} duration={500}>
-                <Text cursor="pointer">Services</Text>
-              </Link>
-            </MenuItem>
+
+            <ServicesLink to="why-us">
+              <Text>Services</Text>
+            </ServicesLink>
             <MenuItem
               as={ReactRouterLink}
               bgColor="#000807"
