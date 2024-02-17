@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
-import React, { SetStateAction } from "react";
+import React from "react";
 import { ServicesWanted } from "../../pages/ContactUs";
 import ServicesOfferedCheckboxGroup from "./ServiceCardCheckboxGroup";
 

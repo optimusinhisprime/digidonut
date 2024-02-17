@@ -5,7 +5,6 @@ import Project3 from "../../images/project3.jpg";
 import Project4 from "../../images/project4.jpg";
 
 import PortfolioProject from "../PortfolioProject";
-import SocialMediaIcons from "../FloatingSocialIcons";
 
 interface HeroProps {
   id: string;
