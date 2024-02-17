@@ -5,6 +5,7 @@ import Project3 from "../../images/project3.jpg";
 import Project4 from "../../images/project4.jpg";
 
 import PortfolioProject from "../PortfolioProject";
+import SocialMediaIcons from "../FloatingSocialIcons";
 
 interface HeroProps {
   id: string;
@@ -24,9 +25,9 @@ export default function Hero({ id }: HeroProps) {
       color="white"
       flexDir={"column"}
     >
-      <Flex flexDir={"column"}>
+      <Flex mt="5" flexDir={"column"}>
         <Flex
-          mx="10"
+          mx={["10", "10"]}
           my={2}
           textAlign={"start"}
           flexDir="column"
