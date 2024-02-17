@@ -25,6 +25,7 @@ export default function PortfolioProject({
               xl: "300px",
               base: "130px",
               md: "200px",
+              sm: "160px",
             }}
             objectFit="cover"
             src={imageSrc}
@@ -44,8 +45,10 @@ export default function PortfolioProject({
         </Box>
       </Flex>
       <Flex flexDir="row">
-        {servicesRendered?.map((service) => (
-          <Text fontSize={{ base: "12" }}>{service}</Text>
+        {servicesRendered?.map((service, index) => (
+          <Text key={index} fontSize={{ base: "12" }}>
+            {service}
+          </Text>
         ))}
       </Flex>
       <Text fontSize={{ "2xl": 20, xl: 18, base: "14" }} textAlign="start">
