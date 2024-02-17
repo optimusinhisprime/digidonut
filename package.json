@@ -59,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-hash-link": "^2.4.9",
     "@types/react-scroll": "^1.8.10"
   }
 }
