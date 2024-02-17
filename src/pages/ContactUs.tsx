@@ -62,12 +62,12 @@ export default function ContactUs() {
         mt={["2", "6"]}
         mr="auto"
         ml="auto"
-        w={["85%", "60%", "60%"]}
+        w={{ base: "85%", lg: "60%", xl: "60%", "2xl": "50%" }}
         justifyContent="center"
         direction="column"
       >
         <Flex mb={["2"]} p={["1", "7"]} textAlign="center" direction="column">
-          <Text fontWeight="bold" fontSize={["3xl", "60px"]}>
+          <Text fontWeight="bold" fontSize={["xl", "3xl", "4xl", "60px"]}>
             Share Your Vision. Let&apos;s Make Digital Magic!
           </Text>
         </Flex>
@@ -82,7 +82,6 @@ export default function ContactUs() {
             <ProjectDetails
               register={register}
               errors={errors}
-              uploadErrors={uploadError}
               selectedFiles={selectedFiles}
               setSelectedFiles={setSelectedFiles}
             />

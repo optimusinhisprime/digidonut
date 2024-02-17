@@ -12,9 +12,12 @@ function CustomRadio(props: any) {
     <chakra.label {...htmlProps} cursor="pointer">
       <input {...getInputProps({})} hidden />
       <Flex
+        borderWidth={1}
+        borderColor="grey"
         {...getRadioProps()}
         bg={state.isChecked ? "teal.400" : "transparent"}
-        p={1}
+        p={2}
+        mx="2"
         rounded="full"
       >
         <Box {...getLabelProps()}>{budgetAmount}</Box>
@@ -48,7 +51,7 @@ export default function BudgetCardRadioGroup({
 
   return (
     <Stack {...getRootProps()}>
-      <HStack>
+      <Flex flexDir={["column", "row"]}>
         {budgetRanges.map((budgetRange) => {
           return (
             <CustomRadio
@@ -59,7 +62,7 @@ export default function BudgetCardRadioGroup({
             />
           );
         })}
-      </HStack>
+      </Flex>
     </Stack>
   );
 }
