@@ -1,16 +1,30 @@
 import { Link } from "react-scroll";
-import { useState } from "react"; // Import useState
 import ContactUsModal from "./ContactUsModal";
-import { Flex, Box } from "@chakra-ui/layout";
-import { Image, Text, IconButton, Hide, Show } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"; // Import HamburgerIcon and CloseIcon
+import { Flex } from "@chakra-ui/layout";
+import { Link as ReactRouterLink } from "react-router-dom";
+import {
+  Image,
+  Text,
+  IconButton,
+  Hide,
+  Show,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+} from "@chakra-ui/react";
+import { HamburgerIcon, ChatIcon } from "@chakra-ui/icons"; // Import HamburgerIcon and CloseIcon
+import { AiOutlineHome } from "react-icons/ai";
+import { MdWorkspaces } from "react-icons/md";
+import { LuPhoneIncoming } from "react-icons/lu";
+import { TbBinaryTree } from "react-icons/tb";
+import { LuLayoutGrid } from "react-icons/lu";
 
 import SiteLogo from "../../images/site-logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
 
   return (
     <Flex
@@ -43,21 +57,66 @@ export default function Navbar() {
         </Hide>
       </Flex>
 
-      {/* Render hamburger menu button for mobile */}
-      <Box display={{ base: "block", xl: "none", "2xl": "none" }}>
-        <IconButton
-          color="white"
-          icon={isMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
-          variant="ghost"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle Menu"
-        />
-      </Box>
+      <Show below="md">
+        <Menu>
+          <MenuButton
+            _active={{ color: "black" }}
+            _focus={{ bgColor: "black" }}
+            color="white"
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon />}
+            variant="ghost"
+          />
+          <MenuList bgColor="#000807">
+            <MenuItem
+              onClick={() => navigate("/")}
+              bgColor="#000807"
+              icon={<AiOutlineHome size={15} />}
+            >
+              Home
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate("/projects")}
+              bgColor="#000807"
+              icon={<LuLayoutGrid size={15} />}
+            >
+              Projects
+            </MenuItem>
+            <MenuItem bgColor="#000807" icon={<MdWorkspaces size={15} />}>
+              <Link to="why-us" smooth={true} duration={500}>
+                <Text cursor="pointer">Services</Text>
+              </Link>
+            </MenuItem>
+            <MenuItem
+              as={ReactRouterLink}
+              bgColor="#000807"
+              icon={<ChatIcon />}
+              command="⌘O"
+              to="https://calendly.com/digidonutstudio"
+            >
+              Book a Meeting
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate("/contact-us")}
+              bgColor="#000807"
+              icon={<LuPhoneIncoming size={15} />}
+              command="⌘O"
+            >
+              Contact Us
+            </MenuItem>
+            <MenuItem
+              onClick={() => navigate("/about-us")}
+              bgColor="#000807"
+              icon={<TbBinaryTree size={15} />}
+            >
+              About Us
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Show>
 
-      {/* Render menu items */}
-      {isMenuOpen && <Flex>Mobile Menu</Flex>}
-
-      <Show above="md">
+      <Hide below="lg">
         <Flex
           flex={{ base: "column" }}
           w="40%"
@@ -77,15 +136,18 @@ export default function Navbar() {
             Home
           </Text>
 
+          <Text
+            cursor="pointer"
+            onClick={() => {
+              navigate("/projects");
+            }}
+          >
+            Projects
+          </Text>
           <Link to="why-us" smooth={true} duration={500}>
-            <Text cursor="pointer">Why Us</Text>
-          </Link>
-          <Link to="services" smooth={true} duration={500}>
             <Text cursor="pointer">Services</Text>
           </Link>
-          <Link to="faq" smooth={true} duration={500}>
-            <Text cursor="pointer">FAQs</Text>
-          </Link>
+
           <Text
             cursor="pointer"
             onClick={() => {
@@ -95,7 +157,7 @@ export default function Navbar() {
             About Us
           </Text>
         </Flex>
-      </Show>
+      </Hide>
 
       <Hide below="md">
         <ContactUsModal />
