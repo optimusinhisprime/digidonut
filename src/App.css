@@ -42,3 +42,7 @@
   src: local("ShantyHouseBold"),
     url("./fonts/Shanty\ House\ DEMO.ttf") format("truetype");
 }
+@font-face {
+  font-family: Lure;
+  src: local("LureBold"), url("./fonts/Lure-GOwXD.ttf") format("truetype");
+}
