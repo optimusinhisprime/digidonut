@@ -1,11 +1,10 @@
 import { Flex } from "@chakra-ui/layout";
 import { Text } from "@chakra-ui/react";
 import React from "react";
-import { ServicesWanted } from "../../pages/ContactUs";
 import ServicesOfferedCheckboxGroup from "./ServiceCardCheckboxGroup";
 
 interface ServicesOfferedProps {
-  setServicesWanted: React.Dispatch<React.SetStateAction<ServicesWanted>>;
+  setServicesWanted: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export default function ServicesOffered({
@@ -28,7 +27,7 @@ export default function ServicesOffered({
         Choose What You Need:
       </Text>
       <Flex mt="5" flexWrap="wrap">
-        <ServicesOfferedCheckboxGroup />
+        <ServicesOfferedCheckboxGroup setServicesWanted={setServicesWanted} />
       </Flex>
     </Flex>
   );

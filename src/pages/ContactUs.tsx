@@ -1,19 +1,13 @@
 import Navbar from "../components/Navbar/Navbar";
 import { Flex } from "@chakra-ui/layout";
-import { Stack, Text } from "@chakra-ui/react";
+import { Stack, Text, useToast } from "@chakra-ui/react";
 import ServicesOffered from "../components/ContactUsForm/ServicesOffered";
 import CustomerBudget from "../components/ContactUsForm/CustomerBudget";
 import ProjectDetails from "../components/ContactUsForm/ProjectDetails";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Footer from "../components/Footer/Footer";
-
-export interface ServicesWanted {
-  logoBranding: boolean;
-  website: boolean;
-  mobileApp: boolean;
-  development: boolean;
-}
+import { useNavigate } from "react-router-dom";
 
 export default function ContactUs() {
   const {
@@ -23,22 +17,28 @@ export default function ContactUs() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const [servicesWanted, setServicesWanted] = useState<ServicesWanted>({
-    logoBranding: false,
-    website: false,
-    mobileApp: false,
-    development: false,
-  });
+  const toast = useToast();
+  const [servicesWanted, setServicesWanted] = useState([""]);
   const [customerBudget, setCustomerBudget] = useState<string>("");
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
+  const navigate = useNavigate();
+
   const onSubmit = (data: any) => {
     data.projectFiles = selectedFiles;
+    data.servicesWanted = servicesWanted;
     data.customerBudget = customerBudget;
-    console.log(data);
+    toast({
+      title: "Details Sent",
+      description: "Your Project Details Have Been Sent for Review.",
+      status: "success",
+      duration: 7000,
+      isClosable: true,
+    });
+    navigate("/");
   };
 
-  const uploadError = {
+  const uploadErrors = {
     firstName: {
       required: "First name is required",
     },
@@ -82,6 +82,7 @@ export default function ContactUs() {
             <ProjectDetails
               register={register}
               errors={errors}
+              uploadErrors={uploadErrors}
               selectedFiles={selectedFiles}
               setSelectedFiles={setSelectedFiles}
             />

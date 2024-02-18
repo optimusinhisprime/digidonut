@@ -1,11 +1,9 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { SetStateAction } from "react";
-import { ServicesWanted } from "../../pages/ContactUs";
 
 interface ServicesFormItemProps {
   title: string;
-  setServicesWanted: React.Dispatch<React.SetStateAction<ServicesWanted>>;
+  setServicesWanted: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export default function ServicesFormItem({
