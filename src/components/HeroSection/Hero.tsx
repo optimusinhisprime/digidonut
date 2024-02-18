@@ -40,6 +40,7 @@ export default function Hero({ id }: HeroProps) {
           }}
         >
           <Heading
+            fontFamily="Lure"
             my="3"
             textAlign={{ base: "start", xl: "start", "2xl": "start" }}
             size={{ base: "xl", xl: "3xl", "2xl": "4xl", lg: "2xl" }}
