@@ -8,7 +8,12 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
-import { FieldErrors, RegisterOptions, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  FieldValues,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form";
 import { SetStateAction } from "react";
 import FileUploadControl from "./FileUploadControl";
 
@@ -17,9 +22,10 @@ interface InputProps {
   label: string;
   name: string;
   register: UseFormRegister<any>;
-  error?: any;
+  errors?: any;
   type?: string;
   placeholder?: string;
+  uploadErrors: any;
 }
 
 const FormInput: React.FC<InputProps> = ({
@@ -27,24 +33,29 @@ const FormInput: React.FC<InputProps> = ({
   label,
   name,
   register,
-  error,
+  errors,
   type = "text",
   placeholder,
+  uploadErrors,
 }) => {
   return (
     <FormControl textAlign="left" w={["100%", "49%"]} my="2">
       <FormLabel fontSize={["xs", "md"]}>{label}</FormLabel>
       <Input
         id={id}
-        {...register(name)}
+        {...register(name, uploadErrors[name])}
         type={type}
         placeholder={placeholder}
       />
-      {error && (
-        <Text fontSize={["xs", "sm"]} color="red">
-          {error}
-        </Text>
-      )}
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => (
+          <Text fontSize={["xs", "sm"]} color="red">
+            {message}
+          </Text>
+        )}
+      />
     </FormControl>
   );
 };
@@ -58,7 +69,8 @@ export const FormTextarea: React.FC<TextareaProps> = ({
   label,
   name,
   register,
-  error,
+  errors,
+  uploadErrors,
   placeholder,
   rows = 4,
 }) => {
@@ -67,23 +79,36 @@ export const FormTextarea: React.FC<TextareaProps> = ({
       <FormLabel fontSize={["xs", "md"]}>{label}</FormLabel>
       <Textarea
         id={id}
-        {...register(name)}
+        {...register(name, uploadErrors[name])}
         fontSize={["xs", "md"]}
         placeholder={placeholder}
         rows={rows}
       />
-      {error && (
-        <Text fontSize={["xs", "sm"]} color="red">
-          {error}
-        </Text>
-      )}
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => (
+          <Text fontSize={["xs", "sm"]} color="red">
+            {message}
+          </Text>
+        )}
+      />
     </FormControl>
   );
 };
 
 interface ProjectDetailsProps {
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  uploadErrors: {
+    firstName: RegisterOptions<FieldValues, "firstName"> | undefined;
+    lastName: RegisterOptions<FieldValues, "lastName"> | undefined;
+    companyName: RegisterOptions<FieldValues, "companyName"> | undefined;
+    companyEmail: RegisterOptions<FieldValues, "companyEmail"> | undefined;
+    projectDescription:
+      | RegisterOptions<FieldValues, "projectDescription">
+      | undefined;
+  };
   selectedFiles: File[];
   setSelectedFiles: React.Dispatch<SetStateAction<File[]>>;
 }
@@ -93,6 +118,7 @@ export default function ProjectDetails({
   errors,
   selectedFiles,
   setSelectedFiles,
+  uploadErrors,
 }: ProjectDetailsProps) {
   return (
     <Flex
@@ -117,28 +143,32 @@ export default function ProjectDetails({
             label="First Name"
             name="firstName"
             register={register}
-            error={errors.firstName && errors.firstName.message}
+            errors={errors}
+            uploadErrors={uploadErrors}
           />
           <FormInput
             id="lastName"
             label="Last Name"
             name="lastName"
             register={register}
-            error={errors.lastName && errors.lastName.message}
+            uploadErrors={uploadErrors}
+            errors={errors}
           />
           <FormInput
             id="companyName"
             label="Company"
             name="companyName"
             register={register}
-            error={errors.companyName && errors.companyName.message}
+            uploadErrors={uploadErrors}
+            errors={errors}
           />
           <FormInput
             id="companyEmail"
             label="Email"
             name="companyEmail"
             register={register}
-            error={errors.companyEmail && errors.companyEmail.message}
+            uploadErrors={uploadErrors}
+            errors={errors}
             type="email"
           />
         </Flex>
@@ -154,7 +184,8 @@ export default function ProjectDetails({
           label="Description"
           name="projectDescription"
           register={register}
-          error={errors.projectDescription && errors.projectDescription.message}
+          uploadErrors={uploadErrors}
+          errors={errors}
           placeholder="Your Project in a Nutshell: Briefly introduce your project. What's its story? What does it aim to achieve?"
         />
         <Button

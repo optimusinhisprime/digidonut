@@ -26,7 +26,6 @@ export default function Hero({ id }: HeroProps) {
     >
       <Flex mt="5" flexDir={"column"}>
         <Flex
-          // lineHeight={2}s
           mx={["10", "10"]}
           my={2}
           textAlign={"start"}
@@ -36,15 +35,16 @@ export default function Hero({ id }: HeroProps) {
             sm: "80%",
             md: "58%",
             lg: "65%",
-            xl: "65%",
-            "2xl": "60%",
+            xl: "72%",
+            "2xl": "65%",
           }}
         >
           <Heading
+            letterSpacing={3}
             fontFamily="Lure"
             my="3"
             textAlign={{ base: "start", xl: "start", "2xl": "start" }}
-            size={{ base: "xl", xl: "3xl", "2xl": "4xl", lg: "2xl" }}
+            size={{ base: "md", sm: "lg", xl: "4xl", "2xl": "4xl", lg: "xl" }}
           >
             A Design and Tech Studio for Your Startups Success.
           </Heading>

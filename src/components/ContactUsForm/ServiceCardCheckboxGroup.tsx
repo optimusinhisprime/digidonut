@@ -7,7 +7,9 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-export default function ServicesOfferedCheckboxGroup() {
+export default function ServicesOfferedCheckboxGroup({
+  setServicesWanted,
+}: any) {
   function CustomCheckbox(props: any) {
     const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
       useCheckbox(props);
@@ -48,8 +50,12 @@ export default function ServicesOfferedCheckboxGroup() {
     );
   }
 
+  const handleChange = (value: any) => {
+    setServicesWanted(value);
+  };
+
   const { getCheckboxProps } = useCheckboxGroup({
-    defaultValue: [""],
+    onChange: handleChange,
   });
 
   const servicesOfferedList = [

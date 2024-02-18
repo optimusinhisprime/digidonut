@@ -28,10 +28,12 @@ function CustomRadio(props: any) {
 
 interface BudgetCardRadioGroupProps {
   register: UseFormRegister<FieldValues>;
+  setCustomerBudget: any;
 }
 
 export default function BudgetCardRadioGroup({
   register,
+  setCustomerBudget,
 }: BudgetCardRadioGroupProps) {
   const budgetRanges = [
     "Less than P5K",
@@ -42,7 +44,7 @@ export default function BudgetCardRadioGroup({
   ];
 
   const handleChange = (value: any) => {
-    //update value in the inquiry form.
+    setCustomerBudget(value);
   };
 
   const { getRadioProps, getRootProps } = useRadioGroup({

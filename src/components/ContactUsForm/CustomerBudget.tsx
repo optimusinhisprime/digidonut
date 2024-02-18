@@ -29,7 +29,10 @@ export default function CustomerBudget({
         Estimate your budget:
       </Text>
       <Flex mt="5" flexWrap={["wrap"]}>
-        <BudgetCardRadioGroup register={register} />
+        <BudgetCardRadioGroup
+          register={register}
+          setCustomerBudget={setCustomerBudget}
+        />
       </Flex>
     </Flex>
   );
