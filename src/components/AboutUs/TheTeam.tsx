@@ -23,7 +23,7 @@ export default function TheTeam() {
     // Add more team members as needed
   ];
   return (
-    <Box mx={{ "2xl": 20, xl: 10 }} py="10">
+    <Box mx={{ "2xl": 20, xl: 10 }} py={["5", "10"]}>
       <Heading mb="8" textAlign="center" size={["xl", "2xl", "2xl"]}>
         Meet the Team
       </Heading>
