@@ -1,5 +1,6 @@
 import { Flex, Text, Link, Stack, Spacer } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { HashLink } from "react-router-hash-link";
 
 export default function Footer() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -29,13 +30,23 @@ export default function Footer() {
       </Text>
       <Spacer />
       <Stack direction="row" spacing={4} justify="center">
-        <Link href="/about-us" fontSize="sm">
+        <Link
+          _hover={{ textDecoration: "none" }}
+          href="/about-us"
+          fontSize="sm"
+        >
           About Us
         </Link>
-        <Link href="/#services" fontSize="sm">
-          Services
-        </Link>
-        <Link href="/contact-us" fontSize="sm">
+        <HashLink to="/#our-services" smooth>
+          <Text fontSize="sm" cursor="pointer">
+            Services
+          </Text>
+        </HashLink>
+        <Link
+          _hover={{ textDecoration: "none" }}
+          href="/contact-us"
+          fontSize="sm"
+        >
           Contact Us
         </Link>
       </Stack>

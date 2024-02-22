@@ -26,9 +26,12 @@ export default function ContactUsButton() {
         borderRadius="full"
         _hover={{
           color: "#F1F4F3",
+          bgColor: "#B80C09",
         }}
         color="#F1F4F3"
-        bgColor="#B80C09"
+        borderColor="#B80C09"
+        bgColor="#000807"
+        borderWidth={1}
         onClick={onOpen}
         m={4}
         onMouseEnter={() => setHovered(true)}

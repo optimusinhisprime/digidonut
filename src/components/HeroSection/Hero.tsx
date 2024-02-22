@@ -21,7 +21,7 @@ export default function Hero({ id }: HeroProps) {
       px={{ "2xl": "40" }}
       id={id}
       bgColor="#000807"
-      color="white"
+      color="#F2F4F3"
       flexDir={"column"}
     >
       <Flex mt="5" flexDir={"column"}>
