@@ -4,7 +4,7 @@ import React from "react";
 export default function History() {
   return (
     <Flex flexDir="column" justifyContent="center" alignItems="center">
-      <Heading my="5" size={["xl", "2xl", "3xl"]}>
+      <Heading my={["2", "5"]} size={["xl", "2xl", "2xl"]}>
         Our Story
       </Heading>
       <Text my={["2", "5", "5"]} w={["90%", "80%", "50%"]}>

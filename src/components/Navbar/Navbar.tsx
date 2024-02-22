@@ -1,7 +1,7 @@
 import { HashLink } from "react-router-hash-link";
 import ContactUsModal from "./ContactUsModal";
 import { Flex } from "@chakra-ui/layout";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink, useLocation } from "react-router-dom";
 import {
   Image,
   Text,
@@ -22,16 +22,24 @@ import { LuLayoutGrid } from "react-icons/lu";
 
 import SiteLogo from "../../images/site-logo.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
+  const handleSetActiveLink = (path: string) => {
+    console.log(path);
+    setActiveLink(path);
+  };
 
   return (
     <Flex
       flexDir="row"
       p="5"
       bgColor="#000807"
-      color={"white"}
+      color={"#F2F4F3"}
       justifyContent="space-between"
       alignItems="center"
       px={{ base: 10, xl: 10, "2xl": 40 }}
@@ -59,7 +67,7 @@ export default function Navbar() {
       <Show below="md">
         <Menu>
           <MenuButton
-            _active={{ color: "black" }}
+            _active={{ color: "#034078" }}
             _focus={{ bgColor: "black" }}
             color="white"
             as={IconButton}
@@ -69,14 +77,18 @@ export default function Navbar() {
           />
           <MenuList bgColor="#000807">
             <MenuItem
-              onClick={() => navigate("/")}
+              onClick={() => {
+                navigate("/");
+              }}
               bgColor="#000807"
               icon={<AiOutlineHome size={15} />}
             >
               Home
             </MenuItem>
             <MenuItem
-              onClick={() => navigate("/projects")}
+              onClick={() => {
+                navigate("/projects");
+              }}
               bgColor="#000807"
               icon={<LuLayoutGrid size={15} />}
             >
@@ -134,9 +146,11 @@ export default function Navbar() {
           <Text
             onClick={() => {
               navigate("/");
+              handleSetActiveLink("/");
             }}
             cursor="pointer"
-            fontWeight="semibold"
+            fontWeight={activeLink === "/" ? "semibold" : "normal"}
+            color={activeLink === "/" ? "#1282A2" : "#F2F4F3"}
           >
             Home
           </Text>
@@ -145,7 +159,10 @@ export default function Navbar() {
             cursor="pointer"
             onClick={() => {
               navigate("/projects");
+              handleSetActiveLink("/projects");
             }}
+            fontWeight={activeLink === "/projects" ? "semibold" : "normal"}
+            color={activeLink === "/projects" ? "#1282A2" : "#F2F4F3"}
           >
             Projects
           </Text>
@@ -157,7 +174,10 @@ export default function Navbar() {
             cursor="pointer"
             onClick={() => {
               navigate("/about-us");
+              handleSetActiveLink("/about-us");
             }}
+            fontWeight={activeLink === "/about-us" ? "semibold" : "normal"}
+            color={activeLink === "/about-us" ? "#1282A2" : "#F2F4F3"}
           >
             About Us
           </Text>

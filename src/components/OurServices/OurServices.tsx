@@ -52,21 +52,33 @@ export default function OurServices({ id }: WhyUsProps) {
       >
         <IconButton
           borderRadius="100%"
+          _hover={{
+            color: "#1985A1",
+          }}
           aria-label="LinkedIn Icon"
           icon={<FaLinkedinIn size={20} />}
         />
         <IconButton
           borderRadius="100%"
+          _hover={{
+            color: "#2191FB",
+          }}
           aria-label="Facebook Icon"
           icon={<FaFacebook size={20} />}
         />
         <IconButton
           borderRadius="100%"
           aria-label="Twitter Icon"
+          _hover={{
+            color: "#00A6FB",
+          }}
           icon={<FaTwitter size={20} />}
         />
         <IconButton
           borderRadius="100%"
+          _hover={{
+            color: "#FF5A5F",
+          }}
           aria-label="Instagram Icon"
           icon={<FaInstagram size={20} />}
         />
