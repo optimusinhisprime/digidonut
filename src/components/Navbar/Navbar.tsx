@@ -58,7 +58,14 @@ export default function Navbar() {
           alt="DigiDonut Studio"
         />
         <Hide below="md">
-          <Text fontSize="large" fontFamily="ShantyHouse" ml="2">
+          <Text
+            bgGradient="linear-gradient(107deg, rgba(18,130,162,1) 0%, rgba(166,188,198,1) 30%, rgba(46,121,189,1) 67%, rgba(203,221,238,1) 96%);"
+            fontSize="large"
+            fontFamily="ShantyHouse"
+            ml="2"
+            bgClip="text"
+            color="transparent"
+          >
             igiDonut Studio
           </Text>
         </Hide>
