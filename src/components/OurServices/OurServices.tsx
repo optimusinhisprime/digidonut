@@ -14,7 +14,7 @@ const servicesProvided = [
   {
     servicesTitle: "Branding & Identity Design",
     serviceDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "We design logos, brand identities, and visual systems that tell your unique story and captivate your audience.",
   },
   {
     servicesTitle: "Cross Platform App Development",
@@ -131,13 +131,11 @@ export default function OurServices({ id }: WhyUsProps) {
           <Flex mx="5" flexDirection="column">
             <Service
               serviceTitle="Branding & Identity Design"
-              serviceDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+              serviceDescription="We design logos, brand identities, and visual systems that tell your unique story and captivate your audience."
             />
             <Service
               serviceTitle="Cross Platform App Development"
-              serviceDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+              serviceDescription="Develop mobile apps that work seamlessly across iOS, Android, and other platforms."
             />
           </Flex>
           <Box>
@@ -146,13 +144,11 @@ export default function OurServices({ id }: WhyUsProps) {
           <Flex mx="5" flexDirection="column">
             <Service
               serviceTitle="Web Sites & Web Applications"
-              serviceDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+              serviceDescription="Design and develop user-friendly websites and web applications that drive results."
             />
             <Service
               serviceTitle="Consultancy"
-              serviceDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+              serviceDescription="We help you choose the right technology solutions for your business goals."
             />
           </Flex>
         </Flex>
