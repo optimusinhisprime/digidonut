@@ -11,12 +11,12 @@ export default function TheTeam() {
     },
     {
       name: "Will Kwelagobe",
-      role: "Coding Partner",
+      role: "Co-Founder, Coding Partner",
       image: CEOImage,
     },
     {
       name: "Pelonomi Phiri",
-      role: "Design Partner",
+      role: "Co-Founder, Design Partner",
       image: CEOImage,
     },
 
