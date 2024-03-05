@@ -5,6 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { ImArrowDownRight2 } from "react-icons/im";
 import Service from "./Service";
+import { Link, useNavigate } from "react-router-dom";
 
 interface WhyUsProps {
   id: string;
@@ -12,7 +13,7 @@ interface WhyUsProps {
 
 const servicesProvided = [
   {
-    servicesTitle: "Branding & Identity Design",
+    servicesTitle: "Branding, Strategy & Identity Design",
     serviceDescription:
       "We design logos, brand identities, and visual systems that tell your unique story and captivate your audience.",
   },
@@ -34,6 +35,8 @@ const servicesProvided = [
 ];
 
 export default function OurServices({ id }: WhyUsProps) {
+  const navigate = useNavigate();
+
   return (
     <Flex
       id={id}
@@ -50,38 +53,49 @@ export default function OurServices({ id }: WhyUsProps) {
         justifyContent={["center", "center", "space-between"]}
         w="30%"
       >
-        <IconButton
-          borderRadius="100%"
-          _hover={{
-            color: "#1985A1",
-          }}
-          aria-label="LinkedIn Icon"
-          icon={<FaLinkedinIn size={20} />}
-        />
-        <IconButton
-          borderRadius="100%"
-          _hover={{
-            color: "#2191FB",
-          }}
-          aria-label="Facebook Icon"
-          icon={<FaFacebook size={20} />}
-        />
-        <IconButton
-          borderRadius="100%"
-          aria-label="Twitter Icon"
-          _hover={{
-            color: "#00A6FB",
-          }}
-          icon={<FaTwitter size={20} />}
-        />
-        <IconButton
-          borderRadius="100%"
-          _hover={{
-            color: "#FF5A5F",
-          }}
-          aria-label="Instagram Icon"
-          icon={<FaInstagram size={20} />}
-        />
+        <Link to="">
+          <IconButton
+            borderRadius="100%"
+            _hover={{
+              color: "#1985A1",
+            }}
+            aria-label="LinkedIn Icon"
+            icon={<FaLinkedinIn size={20} />}
+          />
+        </Link>
+
+        <Link to="">
+          <IconButton
+            borderRadius="100%"
+            _hover={{
+              color: "#2191FB",
+            }}
+            aria-label="Facebook Icon"
+            icon={<FaFacebook size={20} />}
+          />
+        </Link>
+
+        <Link to="">
+          <IconButton
+            borderRadius="100%"
+            aria-label="Twitter Icon"
+            _hover={{
+              color: "#00A6FB",
+            }}
+            icon={<FaTwitter size={20} />}
+          />
+        </Link>
+
+        <Link to="https://www.instagram.com/digidonutstudio/">
+          <IconButton
+            borderRadius="100%"
+            _hover={{
+              color: "#FF5A5F",
+            }}
+            aria-label="Instagram Icon"
+            icon={<FaInstagram size={20} />}
+          />
+        </Link>
       </Flex>
 
       <Box textAlign="center" w="50%">
@@ -130,7 +144,7 @@ export default function OurServices({ id }: WhyUsProps) {
         <Flex flexDirection={["column", "column", "row"]}>
           <Flex mx="5" flexDirection="column">
             <Service
-              serviceTitle="Branding & Identity Design"
+              serviceTitle="Branding, Strategy & Identity Design"
               serviceDescription="We design logos, brand identities, and visual systems that tell your unique story and captivate your audience."
             />
             <Service
