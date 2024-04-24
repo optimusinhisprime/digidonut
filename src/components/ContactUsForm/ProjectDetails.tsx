@@ -111,6 +111,7 @@ interface ProjectDetailsProps {
   };
   selectedFiles: File[];
   setSelectedFiles: React.Dispatch<SetStateAction<File[]>>;
+  isSubmitting: boolean;
 }
 
 export default function ProjectDetails({
@@ -119,6 +120,7 @@ export default function ProjectDetails({
   selectedFiles,
   setSelectedFiles,
   uploadErrors,
+  isSubmitting,
 }: ProjectDetailsProps) {
   return (
     <Flex
@@ -194,6 +196,8 @@ export default function ProjectDetails({
           colorScheme="teal"
           size="md"
           my="2"
+          isLoading={isSubmitting}
+          loadingText="Sending details..."
         >
           Submit
         </Button>

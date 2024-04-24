@@ -5,38 +5,36 @@ import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { ImArrowDownRight2 } from "react-icons/im";
 import Service from "./Service";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface WhyUsProps {
   id: string;
 }
 
-const servicesProvided = [
-  {
-    servicesTitle: "Branding, Strategy & Identity Design",
-    serviceDescription:
-      "We design logos, brand identities, and visual systems that tell your unique story and captivate your audience.",
-  },
-  {
-    servicesTitle: "Cross Platform App Development",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    servicesTitle: "Web Sites & Web Applications",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    servicesTitle: "Consultancy",
-    serviceDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-];
+// const servicesProvided = [
+//   {
+//     servicesTitle: "Branding, Strategy & Identity Design",
+//     serviceDescription:
+//       "We design logos, brand identities, and visual systems that tell your unique story and captivate your audience.",
+//   },
+//   {
+//     servicesTitle: "Cross Platform App Development",
+//     serviceDescription:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     servicesTitle: "Web Sites & Web Applications",
+//     serviceDescription:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+//   {
+//     servicesTitle: "Consultancy",
+//     serviceDescription:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//   },
+// ];
 
 export default function OurServices({ id }: WhyUsProps) {
-  const navigate = useNavigate();
-
   return (
     <Flex
       id={id}

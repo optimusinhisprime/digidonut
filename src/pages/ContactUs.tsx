@@ -8,12 +8,18 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Footer from "../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import AWS from "aws-sdk";
+
+AWS.config.update({
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+  region: process.env.REACT_APP_AWS_REGION,
+});
 
 export default function ContactUs() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -24,18 +30,79 @@ export default function ContactUs() {
 
   const navigate = useNavigate();
 
-  const onSubmit = (data: any) => {
-    data.projectFiles = selectedFiles;
+  const s3 = new AWS.S3();
+
+  const onSubmit = async (data: any) => {
+    // Upload files to S3 bucket
+    const uploadPromises = selectedFiles.map(async (file) => {
+      const params = {
+        Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
+        Key: `${data.companyName}/${file.name}`, // Specify the folder and file name in the bucket
+        Body: file,
+        ACL: "public-read", // Set file permissions
+      };
+
+      try {
+        const uploadResult = await s3.upload(params as any).promise();
+        return uploadResult.Location; // Return the S3 object URL
+      } catch (error) {
+        console.error("Error uploading file to S3:", error);
+        throw error; // Rethrow error to handle in catch block below
+      }
+    });
+
+    // Wait for all uploads to complete
+    const uploadedFiles = await Promise.all(uploadPromises);
+    const fileLinks = uploadedFiles.map((url: string) => `- ${url}`).join("\n");
+
+    // Include S3 URLs in the data object
+    data.projectFiles = fileLinks;
     data.servicesWanted = servicesWanted;
     data.customerBudget = customerBudget;
-    toast({
-      title: "Details Sent",
-      description: "Your Project Details Have Been Sent for Review.",
-      status: "success",
-      duration: 7000,
-      isClosable: true,
-    });
-    navigate("/");
+
+    await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data, null, 2),
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (json.success) {
+          console.log(json);
+          toast({
+            title: "Details Sent",
+            description: "Your Project Details Have Been Sent for Review.",
+            status: "success",
+            duration: 7000,
+            isClosable: true,
+          });
+
+          navigate("/");
+        } else {
+          console.log(json);
+          toast({
+            title: "Details Failed to Submit",
+            description: "Failed to Send Project Details for Review.",
+            status: "error",
+            duration: 7000,
+            isClosable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        toast({
+          title: "Details Failed to Submit",
+          description:
+            "Encountered an error while sending your project details. Please try again later.",
+          status: "error",
+          duration: 7000,
+          isClosable: true,
+        });
+        console.log(error);
+      });
   };
 
   const uploadErrors = {
@@ -73,6 +140,11 @@ export default function ContactUs() {
         </Flex>
 
         <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="hidden"
+            value={process.env.REACT_APP_WEB3FORM_API}
+            {...register("access_key")}
+          />
           <Stack spacing="24px" direction="column">
             <ServicesOffered setServicesWanted={setServicesWanted} />
             <CustomerBudget
@@ -85,6 +157,7 @@ export default function ContactUs() {
               uploadErrors={uploadErrors}
               selectedFiles={selectedFiles}
               setSelectedFiles={setSelectedFiles}
+              isSubmitting={isSubmitting}
             />
           </Stack>
         </form>
