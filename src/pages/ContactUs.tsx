@@ -20,6 +20,7 @@ export default function ContactUs() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -33,6 +34,11 @@ export default function ContactUs() {
   const s3 = new AWS.S3();
 
   const onSubmit = async (data: any) => {
+    console.log(data);
+    if (!data["h-captcha-response"]) {
+      alert("Please complete the captcha before submitting the form.");
+      return;
+    }
     // Upload files to S3 bucket
     const uploadPromises = selectedFiles.map(async (file) => {
       const params = {
@@ -145,6 +151,7 @@ export default function ContactUs() {
             value={process.env.REACT_APP_WEB3FORM_API}
             {...register("access_key")}
           />
+
           <Stack spacing="24px" direction="column">
             <ServicesOffered setServicesWanted={setServicesWanted} />
             <CustomerBudget
@@ -158,6 +165,7 @@ export default function ContactUs() {
               selectedFiles={selectedFiles}
               setSelectedFiles={setSelectedFiles}
               isSubmitting={isSubmitting}
+              setValue={setValue}
             />
           </Stack>
         </form>
