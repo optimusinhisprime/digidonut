@@ -13,9 +13,11 @@ import {
   FieldValues,
   RegisterOptions,
   UseFormRegister,
+  UseFormSetValue,
 } from "react-hook-form";
 import { SetStateAction } from "react";
 import FileUploadControl from "./FileUploadControl";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 interface InputProps {
   id: string;
@@ -112,6 +114,7 @@ interface ProjectDetailsProps {
   selectedFiles: File[];
   setSelectedFiles: React.Dispatch<SetStateAction<File[]>>;
   isSubmitting: boolean;
+  setValue: UseFormSetValue<FieldValues>;
 }
 
 export default function ProjectDetails({
@@ -121,7 +124,12 @@ export default function ProjectDetails({
   setSelectedFiles,
   uploadErrors,
   isSubmitting,
+  setValue,
 }: ProjectDetailsProps) {
+  const onHCaptchaChange = (token: any) => {
+    setValue("h-captcha-response", token);
+  };
+
   return (
     <Flex
       p="5"
@@ -189,6 +197,11 @@ export default function ProjectDetails({
           uploadErrors={uploadErrors}
           errors={errors}
           placeholder="Your Project in a Nutshell: Briefly introduce your project. What's its story? What does it aim to achieve?"
+        />
+        <HCaptcha
+          sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+          reCaptchaCompat={false}
+          onVerify={onHCaptchaChange}
         />
         <Button
           type="submit"
