@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import TeamMember from "./TeamMember";
 import CEOImage from "../../images/ceo-image.jpg";
 
