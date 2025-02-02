@@ -4,7 +4,7 @@ import { FeaturedPost } from "./FeaturedPost";
 import Navbar from "../Navbar/Navbar";
 import client from "../../sanity/client";
 import { Post } from "../../types";
-import HeroLoader from "./HeroLoader";
+import Loader from "./HeroLoader";
 import { motion } from "framer-motion";
 
 interface HeroProps {
@@ -144,7 +144,7 @@ export default function Hero({ id }: HeroProps) {
         </Box>
 
         {loading ? (
-          <HeroLoader /> // Display loader while fetching posts
+          <Loader /> // Display loader while fetching posts
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
