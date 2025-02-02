@@ -4,6 +4,8 @@ import { FeaturedPost } from "./FeaturedPost";
 import Navbar from "../Navbar/Navbar";
 import client from "../../sanity/client";
 import { Post } from "../../types";
+import HeroLoader from "./HeroLoader";
+import { motion } from "framer-motion";
 
 interface HeroProps {
   id: string;
@@ -12,6 +14,7 @@ interface HeroProps {
 export default function Hero({ id }: HeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -71,9 +74,11 @@ export default function Hero({ id }: HeroProps) {
       // @ts-ignore
       .then((data) => {
         setPosts(data);
+        setLoading(false); // Stop loading once data is fetched
       })
       .catch((err: unknown) => {
         console.error("Error fetching posts:", err);
+        setLoading(false); // Stop loading in case of error
       });
   }, []);
 
@@ -138,29 +143,39 @@ export default function Hero({ id }: HeroProps) {
           </Heading>
         </Box>
 
-        {/* Grid for Featured Posts */}
-        {featuredPosts.length > 0 ? (
-          <SimpleGrid
-            columns={{ base: 1, md: 2, lg: 3 }}
-            spacing={6}
-            mx="10"
-            my={10}
-          >
-            {featuredPosts.map((post, index) => (
-              <FeaturedPost
-                key={index}
-                title={post.title}
-                excerpt={post.excerpt}
-                slug={post.slug.current}
-              />
-            ))}
-          </SimpleGrid>
+        {loading ? (
+          <HeroLoader /> // Display loader while fetching posts
         ) : (
-          <Box mx="10" textAlign="center" mt={6}>
-            <Text fontSize="lg" color="gray.400">
-              No featured posts available at the moment.
-            </Text>
-          </Box>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }} // Transition the posts in
+          >
+            {/* Grid for Featured Posts */}
+            {featuredPosts.length > 0 ? (
+              <SimpleGrid
+                columns={{ base: 1, md: 2, lg: 3 }}
+                spacing={6}
+                mx="10"
+                my={10}
+              >
+                {featuredPosts.map((post, index) => (
+                  <FeaturedPost
+                    key={index}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    slug={post.slug.current}
+                  />
+                ))}
+              </SimpleGrid>
+            ) : (
+              <Box mx="10" textAlign="center" mt={6}>
+                <Text fontSize="lg" color="gray.400">
+                  No featured posts available at the moment.
+                </Text>
+              </Box>
+            )}
+          </motion.div>
         )}
       </Flex>
     </Flex>
