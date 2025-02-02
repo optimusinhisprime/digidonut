@@ -45,6 +45,7 @@ export default function OurServices({ id }: WhyUsProps) {
       textAlign="center"
       pb="20"
       color="#262626"
+      px={{ "2xl": "40" }}
     >
       <Flex
         p={5}

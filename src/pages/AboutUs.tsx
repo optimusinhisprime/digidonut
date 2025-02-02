@@ -8,11 +8,15 @@ import Values from "../components/AboutUs/Values";
 export default function AboutUs() {
   return (
     <Flex bgColor="#F2F4F3" color="#01110A" direction="column">
-      <Navbar />
-      <TheTeam />
-      <History />
-      <Values />
-      {/* <Reviews /> */}
+      <Flex bgColor="#000807" px={{ "2xl": "40" }} flexDirection="column">
+        <Navbar />
+      </Flex>
+      <Flex px={{ "2xl": "40" }} flexDirection="column">
+        <TheTeam />
+        <History />
+        <Values />
+      </Flex>
+
       <Footer />
     </Flex>
   );

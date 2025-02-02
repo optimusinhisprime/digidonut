@@ -42,7 +42,8 @@ export default function Navbar() {
       color={"#F2F4F3"}
       justifyContent="space-between"
       alignItems="center"
-      px={{ base: 10, xl: 10, "2xl": 40 }}
+      px={{ base: 10, xl: 10 }}
+      zIndex={1}
     >
       <Flex
         onClick={() => {
