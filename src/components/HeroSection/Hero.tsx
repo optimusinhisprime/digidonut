@@ -1,35 +1,17 @@
-import { Flex, Heading, Text, Box, Stack } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { Flex, Heading, Text, Box, SimpleGrid } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 import { FeaturedPost } from "./FeaturedPost";
 import Navbar from "../Navbar/Navbar";
+import client from "../../sanity/client";
+import { Post } from "../../types";
 
 interface HeroProps {
   id: string;
 }
 
-const blogPosts = [
-  {
-    title: "Why Every Startup Needs a Strong Brand Identity",
-    excerpt:
-      "A deep dive into how branding impacts startup success and tips to build a solid identity.",
-    slug: "why-every-startup-needs-brand-identity",
-  },
-  {
-    title: "Building Scalable Apps with React Native",
-    excerpt:
-      "Exploring how React Native and Expo can help you create high-performance, cross-platform apps.",
-    slug: "building-scalable-apps-react-native",
-  },
-  {
-    title: "Essential Web Design Principles for Business Growth",
-    excerpt:
-      "Key design principles that can improve user experience and conversion rates on your website.",
-    slug: "essential-web-design-principles-business-growth",
-  },
-];
-
 export default function Hero({ id }: HeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -67,6 +49,35 @@ export default function Hero({ id }: HeroProps) {
     }
     animate();
   }, []);
+
+  useEffect(() => {
+    const query = `*[_type == "post"]{
+      _id,
+      title,
+      slug,
+      author,
+      publishedAt,
+      image,
+      excerpt,
+      isFeatured,
+      category,
+      readTime,
+      body
+    }`;
+
+    client
+      // @ts-ignore
+      .fetch<Post[]>(query)
+      // @ts-ignore
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((err: unknown) => {
+        console.error("Error fetching posts:", err);
+      });
+  }, []);
+
+  const featuredPosts = posts.filter((post) => post.isFeatured).slice(0, 3); // Limit to 3 featured posts
 
   return (
     <Flex
@@ -126,12 +137,31 @@ export default function Hero({ id }: HeroProps) {
             Latest Insights:
           </Heading>
         </Box>
-        <Stack direction={["column", "row"]} mx="10" my={10} spacing={2}>
-          {blogPosts.map((post, index) => (
-            <FeaturedPost key={index} post={post} />
-          ))}
-        </Stack>
-        ;
+
+        {/* Grid for Featured Posts */}
+        {featuredPosts.length > 0 ? (
+          <SimpleGrid
+            columns={{ base: 1, md: 2, lg: 3 }}
+            spacing={6}
+            mx="10"
+            my={10}
+          >
+            {featuredPosts.map((post, index) => (
+              <FeaturedPost
+                key={index}
+                title={post.title}
+                excerpt={post.excerpt}
+                slug={post.slug.current}
+              />
+            ))}
+          </SimpleGrid>
+        ) : (
+          <Box mx="10" textAlign="center" mt={6}>
+            <Text fontSize="lg" color="gray.400">
+              No featured posts available at the moment.
+            </Text>
+          </Box>
+        )}
       </Flex>
     </Flex>
   );

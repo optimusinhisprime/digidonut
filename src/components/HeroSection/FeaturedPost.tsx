@@ -2,15 +2,18 @@ import { Box, Heading, Link, Text } from "@chakra-ui/react";
 import React from "react";
 
 interface FeaturedPostProps {
-  post: {
-    title: string;
-    excerpt: string;
-    slug: string;
-  };
+  title: string;
+  excerpt: string;
+  slug: string;
 }
-export const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
+
+export const FeaturedPost: React.FC<FeaturedPostProps> = ({
+  title,
+  excerpt,
+  slug,
+}) => {
   return (
-    <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
+    <Link href={`/blog/${slug}`} style={{ textDecoration: "none" }}>
       <Box
         p={4}
         borderWidth="1px"
@@ -28,10 +31,10 @@ export const FeaturedPost: React.FC<FeaturedPostProps> = ({ post }) => {
         }}
       >
         <Heading size={["sm", "md"]} color="#F2F4F3">
-          {post.title}
+          {title}
         </Heading>
         <Text mt={2} fontSize="sm" color="gray.400">
-          {post.excerpt}
+          {excerpt}
         </Text>
       </Box>
     </Link>

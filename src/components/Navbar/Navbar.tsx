@@ -131,6 +131,13 @@ export default function Navbar() {
               Contact Us
             </MenuItem>
             <MenuItem
+              onClick={() => navigate("/blog")}
+              bgColor="#000807"
+              icon={<TbBinaryTree size={15} />}
+            >
+              Blog
+            </MenuItem>
+            <MenuItem
               onClick={() => navigate("/about-us")}
               bgColor="#000807"
               icon={<TbBinaryTree size={15} />}
@@ -178,6 +185,17 @@ export default function Navbar() {
             <Text cursor="pointer">Services</Text>
           </HashLink>
 
+          <Text
+            cursor="pointer"
+            onClick={() => {
+              navigate("/blog");
+              handleSetActiveLink("/blog");
+            }}
+            fontWeight={activeLink === "/blog" ? "semibold" : "normal"}
+            color={activeLink === "/blog" ? "#1282A2" : "#F2F4F3"}
+          >
+            Our Blog
+          </Text>
           <Text
             cursor="pointer"
             onClick={() => {
